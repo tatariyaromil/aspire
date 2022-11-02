@@ -3,6 +3,7 @@
 Step 1 :: 
 			git clone https://github.com/tatariyaromil/aspire.git
 			Run this command and setup project.
+            
 Step 2 ::
 			create database and set in env file
 			or copy aspire.sql file from database folder
