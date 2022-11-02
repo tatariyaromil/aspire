@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "2d8b94ed-2186-421a-ac1f-2e3bf7d620fe",
+		"name": "Aspire",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Customer Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "rambhai5103@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "Ram",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/customer/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"USERTOKEN\", 'Bearer '+pm.response.json().token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "tatariyaromil@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/customer/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Loan Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{USERTOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "10000",
+									"type": "default"
+								},
+								{
+									"key": "term",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "date",
+									"value": "30th Nov 2022",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/customer/loan-request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"loan-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer view loan",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{USERTOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/customer/view-loan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"view-loan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer repayment loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{USERTOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "loan id",
+									"type": "default"
+								},
+								{
+									"key": "amount",
+									"value": "1000",
+									"description": "repayment amount",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/customer/repayment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"repayment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"ADMINTOKEN\", 'Bearer '+pm.response.json().token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "Admin@123#",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/admin/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin can check pending loan for approve or reject",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{ADMINTOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/admin/pending-loan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"pending-loan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update loan status by Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{ADMINTOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "loan id",
+									"type": "default"
+								},
+								{
+									"key": "request_status",
+									"value": "Approved",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/admin/update-loan-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"update-loan-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
